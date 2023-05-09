@@ -13,7 +13,9 @@ export default function Header() {
                         source={logo}
                         style={styles.logoImage}
                     />
-                    <Text style={styles.title}>Chfitness</Text>
+
+                    <Text style={styles.iniTitle}>Olá <Text style={styles.title}>Chfitness</Text></Text>
+
 
                 </View>
                 <SignOut size={22} color="#c4c4cc" weight="bold" />

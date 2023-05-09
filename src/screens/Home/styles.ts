@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#121214',
+        backgroundColor: '#0C494F',
         alignItems: 'center',
         padding: 30
     },
@@ -14,19 +14,19 @@ export const styles = StyleSheet.create({
         alignItems: 'center'
     },
     topText: {
-        color: '#e1e1e6',
+        color: '#fff',
         fontSize: 24,
-        fontFamily: 'Roboto_700Bold',
+        fontFamily: 'Nunito_700Bold',
         lineHeight: 160,
         paddingHorizontal: 10
     },
     subTitle: {
-        color: '#c4c4cc',
-        fontFamily: 'Roboto_400Regular'
+        color: '#fff',
+        fontFamily: 'Nunito_400Regular'
     },
     logoImg: {
-        width: 90,
-        height: 90,
+        width: 140,
+        height: 140,
         borderRadius: 100,
         marginVertical: 10
     },
@@ -39,33 +39,53 @@ export const styles = StyleSheet.create({
     textContent: {
         color: '#fff',
         fontSize: 18,
-        fontFamily: 'Roboto_700Bold'
+        fontFamily: 'Nunito_700Bold'
     },
     input: {
-        backgroundColor: '#202024',
+        backgroundColor: '#fff',
         width: 300,
         height: 55,
         borderRadius: 8,
-        fontFamily: 'Roboto_400Regular',
+        fontFamily: 'Nunito_400Regular',
         fontSize: 16,
         paddingHorizontal: 8,
-        color: '#c4c4cc',
-        marginVertical: 10
+        color: '#000',
+        marginVertical: 10,
+        fontWeight: 'bold',
     },
     footer: {
         position: 'absolute',
-        bottom: 30
+        bottom: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     button: {
-        backgroundColor: '#00b37e',
+        backgroundColor: '#DBE611',
         width: 300,
-        height: 50,
+        height: 55,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 8
+        borderRadius: 8,
+        marginTop: 10
     },
     textButton: {
+        color: '#000',
+        fontFamily: 'Nunito_900Black',
+        fontSize: 18
+    },
+    footerInitText: {
         color: '#fff',
-        fontFamily: 'Roboto_700Bold'
+        fontFamily: 'Nunito_400Regular',
+        fontSize: 18
+    },
+    footerSecoText: {
+        fontFamily: 'Nunito_700Bold',
+        fontSize: 30,
+        color: '#fff'
+    },
+    footerThirText: {
+        fontFamily: 'Nunito_400Regular',
+        fontSize: 16,
+        color: '#fff'
     }
 })

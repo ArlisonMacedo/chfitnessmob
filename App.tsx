@@ -1,14 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { View, ActivityIndicator } from 'react-native';
-import { Roboto_400Regular, Roboto_700Bold, useFonts } from '@expo-google-fonts/roboto'
+import { Nunito_400Regular, Nunito_700Bold, Nunito_900Black, useFonts } from '@expo-google-fonts/nunito'
 
 import Routes from './src/Routes';
 
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold
+    Nunito_400Regular,
+    Nunito_700Bold,
+    Nunito_900Black
   })
 
   if (!fontsLoaded) {

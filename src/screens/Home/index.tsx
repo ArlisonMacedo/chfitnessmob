@@ -20,7 +20,7 @@ export default function Home() {
     return (
         <View style={styles.container}>
             <View style={styles.top}>
-                <Barbell size={40} color="#00b37e" />
+                <Barbell size={40} color="#DBE611" />
                 <Text style={styles.topText}>CHFITNESS</Text>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -31,15 +31,18 @@ export default function Home() {
                 />
             </View>
 
-            <View style={styles.content}>
+            {/* <View style={styles.content}>
                 <Text style={styles.textContent}>Acesse sua conta</Text>
                 <TextInput placeholder="Usuário" placeholderTextColor={'#7c7c8a'} autoCapitalize="none" style={styles.input} />
                 <TextInput placeholder="Senha" placeholderTextColor={'#7c7c8a'} autoCapitalize="none" secureTextEntry style={styles.input} />
-            </View>
+            </View> */}
 
             <View style={styles.footer}>
+                <Text style={styles.footerInitText}>Welcome to</Text>
+                <Text style={styles.footerSecoText}>DASHBODY {"\n"} WORKOUT</Text>
+                <Text style={styles.footerThirText}>Archieve your body goals with us</Text>
                 <TouchableOpacity activeOpacity={0.4} style={styles.button} onPress={clicked}>
-                    <Text style={styles.textButton}>Entrar</Text>
+                    <Text style={styles.textButton}>Get Started</Text>
                 </TouchableOpacity>
             </View>
         </View>

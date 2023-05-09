@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#121214',
+        backgroundColor: '#0C494F',
         // alignItems: 'center',
     },
     menuTop: {
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     },
     menuTopText: {
         color: '#00b37e',
-        fontFamily: 'Roboto_700Bold',
+        fontFamily: 'Nunito_700Bold',
         fontSize: 12
     },
     content: {
@@ -35,36 +35,37 @@ export const styles = StyleSheet.create({
     },
     contentText: {
         color: '#c4c4cc',
-        fontFamily: 'Roboto_400Regular',
+        fontFamily: 'Nunito_400Regular',
         fontSize: 18,
 
     },
     cellButton: {
-        backgroundColor: '#323238',
-        width: '100%',
+        // backgroundColor: '#DBE611',
+        width: '110%',
         height: 100,
-        borderRadius: 5,
+        borderRadius: 8,
         marginVertical: 10,
         padding: 5,
-
+        borderWidth: 1,
+        borderColor: '#fff',
         justifyContent: 'center',
         paddingLeft: 10
     },
     cellButtonName: {
-        color: '#fff',
-        fontFamily: 'Roboto_400Regular',
+        color: '#DBE611',
+        fontFamily: 'Nunito_700Bold',
         fontSize: 22,
         paddingVertical: 5,
 
     },
     cellButtonDate: {
         fontSize: 12,
-        fontFamily: 'Roboto_400Regular',
-        color: '#c4c4cc'
+        fontFamily: 'Nunito_400Regular',
+        color: '#fff'
     },
     cellButtonCountDays: {
-        fontFamily: 'Roboto_400Regular',
+        fontFamily: 'Nunito_400Regular',
         fontSize: 12,
-        color: '#c4c4cc'
+        color: '#fff'
     }
 })

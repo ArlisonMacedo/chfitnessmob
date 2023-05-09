@@ -6,10 +6,10 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 100,
         marginTop: 10,
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
     },
     menuTopButton: {
-        backgroundColor: '#29292E',
+        backgroundColor: '#DBE611',
         width: '40%',
         height: 50,
         alignItems: 'center',
@@ -19,8 +19,9 @@ export const styles = StyleSheet.create({
         borderWidth: 0.2
     },
     menuTopText: {
-        color: '#00b37e',
-        fontFamily: 'Roboto_700Bold',
-        fontSize: 12
+        color: '#000',
+        fontFamily: 'Nunito_900Black',
+        fontSize: 12,
+        // fontWeight: 'bold'
     },
 })

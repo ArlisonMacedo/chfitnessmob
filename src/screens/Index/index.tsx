@@ -1,6 +1,6 @@
 
 import { TouchableOpacity, View, Text, ScrollView } from 'react-native'
-import { CaretRight } from 'phosphor-react-native'
+import { Barbell, CaretRight } from 'phosphor-react-native'
 import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
 import dayjs from 'dayjs'
@@ -27,7 +27,6 @@ export default function Index() {
 
     const [users, setUsers] = useState<User[]>([])
 
-
     useEffect(() => {
         api.get('user').
             then(response => {
@@ -37,6 +36,8 @@ export default function Index() {
 
 
     }, [])
+
+
 
     return (
         <View style={styles.container}>
@@ -53,14 +54,17 @@ export default function Index() {
                     {
                         users?.map((user) => {
                             return (
-                                <TouchableOpacity style={styles.cellButton} activeOpacity={0.6} key={user.id}>
+                                <TouchableOpacity style={styles.cellButton} activeOpacity={0.7} key={user.id}>
                                     <View style={{
                                         flexDirection: 'row',
                                         alignItems: 'center',
                                         justifyContent: 'space-between'
                                     }}>
                                         <View>
-                                            <Text style={styles.cellButtonName} >{user.name}</Text>
+                                            <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                                <Text style={styles.cellButtonName} >{user.name} </Text>
+                                                <Barbell size={16} color='#DBE611' />
+                                            </View>
                                             {
                                                 user.pushings.map(push => {
                                                     return (
@@ -76,7 +80,7 @@ export default function Index() {
                                                                 </Text>
                                                             </Text>
                                                             <Text style={styles.cellButtonCountDays}>Dias ativos {'\b'}
-                                                                <Text style={{ fontWeight: 'bold', color: '#fff' }}>
+                                                                <Text style={{ fontWeight: 'bold', color: '#DBE611' }}>
                                                                     {push.count_day}
                                                                 </Text>
                                                             </Text>
