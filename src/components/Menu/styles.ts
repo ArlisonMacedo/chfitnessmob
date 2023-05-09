@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     menuTopButton: {
-        backgroundColor: '#DBE611',
+        backgroundColor: '#FBEF55',
         width: '40%',
         height: 50,
         alignItems: 'center',

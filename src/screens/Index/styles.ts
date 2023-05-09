@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#0C494F',
+        backgroundColor: '#0A3F53',
         // alignItems: 'center',
     },
     menuTop: {
@@ -34,9 +34,10 @@ export const styles = StyleSheet.create({
         marginHorizontal: 25
     },
     contentText: {
-        color: '#c4c4cc',
-        fontFamily: 'Nunito_400Regular',
+        color: '#fff',
+        fontFamily: 'Nunito_700Bold',
         fontSize: 18,
+        alignSelf: 'flex-start'
 
     },
     cellButton: {
@@ -46,17 +47,16 @@ export const styles = StyleSheet.create({
         borderRadius: 8,
         marginVertical: 10,
         padding: 5,
-        borderWidth: 1,
-        borderColor: '#fff',
+        borderWidth: 0.4,
+        borderColor: '#FBEF55',
         justifyContent: 'center',
         paddingLeft: 10
     },
     cellButtonName: {
-        color: '#DBE611',
+        color: '#FBEF55',
         fontFamily: 'Nunito_700Bold',
         fontSize: 22,
         paddingVertical: 5,
-
     },
     cellButtonDate: {
         fontSize: 12,

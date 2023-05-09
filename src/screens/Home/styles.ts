@@ -4,9 +4,14 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#0C494F',
-        alignItems: 'center',
-        padding: 30
+        // backgroundColor: '#0C494F',
+        // alignItems: 'center',
+        // padding: 30
+    },
+    imageBg: {
+        flex: 1,
+        // justifyContent: 'center',
+        alignItems: 'center'
     },
     top: {
         flexDirection: 'row',
@@ -57,10 +62,11 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 50,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+
     },
     button: {
-        backgroundColor: '#DBE611',
+        backgroundColor: '#FBEF55',
         width: 300,
         height: 55,
         justifyContent: 'center',
