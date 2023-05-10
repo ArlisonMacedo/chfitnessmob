@@ -44,6 +44,13 @@ export default function Index() {
         )
     }
 
+    function handleGoNewStudy() {
+        dispatch(
+            CommonActions.navigate('NewStudy')
+        )
+        console.log('clicou')
+    }
+
     return (
         <View style={styles.container}>
             <Header />
@@ -52,9 +59,14 @@ export default function Index() {
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', flexGrow: 0.5 }}>
                     <Text style={styles.contentText}>Alunos</Text>
+
                     <CaretDown size={15} color='#FBEF55' weight='bold' />
+
                 </View>
-                <UserPlus color='#FBEF55' size={30} />
+                <TouchableOpacity onPress={handleGoNewStudy}>
+
+                    <UserPlus color='#FBEF55' size={30} />
+                </TouchableOpacity>
 
             </View>
             <ScrollView
