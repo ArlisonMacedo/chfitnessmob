@@ -122,12 +122,12 @@ export default function Index() {
                                                                 <View key={push.id}>
                                                                     <Text style={styles.cellButtonDate}>Dia assin. {'\b'}
                                                                         <Text style={{ fontWeight: 'bold' }}>
-                                                                            {dayjs(push.day_assin).format('MM/DD/YYYY h:mm: A')}
+                                                                            {dayjs(push.day_assin).format('DD/MM/YYYY h:mm: A')}
                                                                         </Text>
                                                                     </Text>
                                                                     <Text style={styles.cellButtonDate}>Dia venc. {'\b'}
                                                                         <Text style={{ fontWeight: 'bold' }}>
-                                                                            {dayjs(push.day_venc).format('MM/DD/YYYY h:mm: A')}
+                                                                            {dayjs(push.day_venc).format('DD/MM/YYYY h:mm: A')}
                                                                         </Text>
                                                                     </Text>
                                                                     <Text style={styles.cellButtonCountDays}>Dias ativos {'\b'}
