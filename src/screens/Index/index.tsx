@@ -1,9 +1,10 @@
 
 import { TouchableOpacity, View, Text, ScrollView, ActivityIndicator } from 'react-native'
-import { Barbell, CaretRight, UserPlus, CaretDown } from 'phosphor-react-native'
+import { Barbell, CaretRight, UserPlus, ArrowsClockwise } from 'phosphor-react-native'
 import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
 import dayjs from 'dayjs'
+import Toast from 'react-native-toast-message'
 
 import { styles } from './styles'
 import Header from '../../components/Header'
@@ -51,6 +52,24 @@ export default function Index() {
         console.log('clicou')
     }
 
+    function updateData() {
+        api.get('user').
+            then(response => {
+                setUsers(response.data)
+            })
+
+        showToast()
+    }
+
+    const showToast = () => {
+        Toast.show({
+            type: 'success',
+            text1: 'Sucesso',
+            text2: 'Atualizado',
+            visibilityTime: 3000
+        })
+    }
+
     return (
         <View style={styles.container}>
             <Header />
@@ -59,8 +78,9 @@ export default function Index() {
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', flexGrow: 0.5 }}>
                     <Text style={styles.contentText}>Alunos</Text>
-
-                    <CaretDown size={15} color='#FBEF55' weight='bold' />
+                    <TouchableOpacity onPress={updateData} style={{ marginLeft: 10 }}>
+                        <ArrowsClockwise size={22} color='#FBEF55' weight='bold' />
+                    </TouchableOpacity>
 
                 </View>
                 <TouchableOpacity onPress={handleGoNewStudy}>

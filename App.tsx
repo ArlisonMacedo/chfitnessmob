@@ -3,6 +3,7 @@ import { View, ActivityIndicator } from 'react-native';
 import { Nunito_400Regular, Nunito_700Bold, Nunito_900Black, useFonts } from '@expo-google-fonts/nunito'
 
 import Routes from './src/Routes';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 export default function App() {
 
@@ -24,6 +25,7 @@ export default function App() {
     <>
       <Routes />
       <StatusBar style="light" translucent />
+      <Toast />
     </>
   );
 }
