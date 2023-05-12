@@ -5,6 +5,7 @@ import Home from './screens/Home'
 import Index from './screens/Index'
 import Details from './screens/Details'
 import NewStudy from './screens/NewStudy'
+import Late from './screens/Late'
 
 
 const { Navigator, Screen } = createNativeStackNavigator()
@@ -23,6 +24,7 @@ export default function Routes() {
                 <Screen name='Index' component={Index} />
                 <Screen name='Details' component={Details} />
                 <Screen name='NewStudy' component={NewStudy} />
+                <Screen name='Late' component={Late} />
             </Navigator>
         </NavigationContainer>
     )

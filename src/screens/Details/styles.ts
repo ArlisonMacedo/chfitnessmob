@@ -29,11 +29,12 @@ export const styles = StyleSheet.create({
     },
     pushing: {
         marginTop: 20,
-        borderColor: '#FBEF55',
-        borderWidth: 0.5,
+        // borderColor: '#FBEF55',
+        // borderWidth: 0.5,
         width: '100%',
         padding: 10,
-        borderRadius: 5
+        borderRadius: 5,
+        gap: 10
     },
     dayAssin: {
         fontFamily: 'Nunito_700Bold',
@@ -49,5 +50,62 @@ export const styles = StyleSheet.create({
         fontFamily: 'Nunito_700Bold',
         color: '#c4c4cc',
         fontSize: 18
+    },
+    statusV: {
+        backgroundColor: 'green',
+        width: 70,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 40,
+        borderRadius: 5
+    },
+    statusX: {
+        backgroundColor: 'red',
+        width: 70,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 40,
+        borderRadius: 5
+    },
+    statusText: {
+        color: '#c4c4cc',
+        fontFamily: 'Nunito_700Bold'
+    },
+    footer: {
+        position: 'absolute',
+        bottom: '-50%',
+        width: '100%'
+    },
+    footerContent: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        rowGap: 2
+    },
+    buttonCallWhatsapp: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#53e151',
+        width: '45%',
+        height: 40,
+        borderRadius: 8
+    },
+    buttonCallWhatsappText: {
+        color: '#000',
+        fontFamily: 'Nunito_900Black'
+    },
+    buttonCallRenew: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#c4c4cc',
+        width: '45%',
+        height: 40,
+        borderRadius: 8
+    },
+    buttonCallRenewText: {
+        color: '#000',
+        fontFamily: 'Nunito_900Black'
     }
 })

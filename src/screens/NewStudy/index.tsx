@@ -18,6 +18,7 @@ export default function NewStudy() {
         const data = {
             name, whatsapp
         }
+
         const response = await api.post('user', data)
 
         console.log(response.data)
