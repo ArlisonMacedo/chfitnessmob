@@ -16,12 +16,7 @@ interface User {
     id: string
     name: string
     whatsapp: string
-    pushings: {
-        id: string
-        day_assin: string
-        day_venc: string
-        count_day: number
-    }
+
 }
 
 interface Pushing {
@@ -116,27 +111,33 @@ export default function Details() {
                     </View>
 
                     {
-                        pushing.map(pusher => {
-                            return (
-                                <View key={pusher.id} style={styles.pushing}>
-                                    <Text style={styles.dayAssin}>Dia da assinatura: {dayjs(pusher.day_assin).format('DD/MM/YYYY h:mm: A')}</Text>
-                                    <Text style={styles.dayVen}>Dia do vencimento: {dayjs(pusher.day_venc).format('DD/MM/YYYY h:mm: A')}</Text>
-                                    <Text style={styles.countDay}>Dias usados: {pusher.count_day === 0 ? (<Text>Mensalidade realizada hoje</Text>) : (<Text>{pusher.count_day} Dias</Text>)}</Text>
-                                    {
-                                        pusher.count_day <= 30 ? (
-                                            <TouchableOpacity style={styles.statusV}>
-                                                <Text style={styles.statusText}>Regular</Text>
-                                            </TouchableOpacity>
-                                        ) :
-                                            (
-                                                <TouchableOpacity style={styles.statusX}>
-                                                    <Text style={styles.statusText}>Atrasado</Text>
+                        !pushing.length ? (
+                            <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: '20%' }}>
+                                <Text style={{ color: '#c4c4cc', fontFamily: 'Nunito_400Regular' }}>Não há informações sobre mensalidade</Text>
+                            </View>
+                        ) : (
+                            pushing.map(pusher => {
+                                return (
+                                    <View key={pusher.id} style={styles.pushing}>
+                                        <Text style={styles.dayAssin}>Dia da assinatura: {dayjs(pusher.day_assin).format('DD/MM/YYYY h:mm: A')}</Text>
+                                        <Text style={styles.dayVen}>Dia do vencimento: {dayjs(pusher.day_venc).format('DD/MM/YYYY h:mm: A')}</Text>
+                                        <Text style={styles.countDay}>Dias usados: {pusher.count_day === 0 ? (<Text>Mensalidade realizada hoje</Text>) : (<Text>{pusher.count_day} Dias</Text>)}</Text>
+                                        {
+                                            pusher.count_day <= 30 ? (
+                                                <TouchableOpacity style={styles.statusV}>
+                                                    <Text style={styles.statusText}>Regular</Text>
                                                 </TouchableOpacity>
-                                            )
-                                    }
-                                </View>
-                            )
-                        })
+                                            ) :
+                                                (
+                                                    <TouchableOpacity style={styles.statusX}>
+                                                        <Text style={styles.statusText}>Atrasado</Text>
+                                                    </TouchableOpacity>
+                                                )
+                                        }
+                                    </View>
+                                )
+                            })
+                        )
                     }
                 </View>
 

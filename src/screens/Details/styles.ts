@@ -80,7 +80,8 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        rowGap: 2
+        rowGap: 2,
+
     },
     buttonCallWhatsapp: {
         flexDirection: 'row',
