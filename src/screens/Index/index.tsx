@@ -94,6 +94,17 @@ export default function Index() {
             >
                 <View style={styles.content}>
 
+                    {
+                        !users && (
+                            <View>
+                                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                    {/* <ActivityIndicator size={50} color='#fff' /> */}
+                                    <Text style={styles.contentText}>Não há alunos cadastrados...</Text>
+                                </View>
+                            </View>
+                        )
+                    }
+
 
                     {
                         !users.length ?
@@ -131,9 +142,18 @@ export default function Index() {
                                                                         </Text>
                                                                     </Text>
                                                                     <Text style={styles.cellButtonCountDays}>Dias ativos {'\b'}
-                                                                        <Text style={{ fontWeight: 'bold', color: '#FBEF55' }}>
-                                                                            {push.count_day}
-                                                                        </Text>
+                                                                        {
+                                                                            push.count_day === 0 ? (
+                                                                                <Text style={{ fontWeight: 'bold', color: '#FBEF55' }}>
+                                                                                    Assinatura realizada hoje
+                                                                                </Text>
+                                                                            ) : (
+                                                                                <Text style={{ fontWeight: 'bold', color: '#FBEF55' }}>
+                                                                                    {push.count_day}
+                                                                                </Text>
+
+                                                                            )
+                                                                        }
                                                                     </Text>
                                                                 </View>
 

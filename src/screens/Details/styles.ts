@@ -107,5 +107,63 @@ export const styles = StyleSheet.create({
     buttonCallRenewText: {
         color: '#000',
         fontFamily: 'Nunito_900Black'
+    },
+    modelView: {
+        // flex: 1,
+        backgroundColor: '#005361',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        width: '90%',
+        height: '40%',
+        bottom: '20%',
+        left: '5%',
+        borderRadius: 8,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 10,
+        shadowRadius: 8,
+        elevation: 60,
+    },
+    modelContent: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '80%'
+    },
+    inputText: {
+        fontFamily: 'Nunito_900Black',
+        fontSize: 22,
+        color: '#FBEF55'
+    },
+    inputModal: {
+        width: '22%',
+        // borderWidth: 1,
+        backgroundColor: '#fff',
+        marginVertical: 20,
+        borderRadius: 8,
+        height: 40,
+        paddingLeft: 17,
+        color: '#000',
+        fontFamily: 'Nunito_700Bold',
+        fontSize: 22,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+    },
+    modalButton: {
+        backgroundColor: '#FBEF55',
+        width: 100,
+        height: 45,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+
+    },
+    modalButtonText: {
+        fontFamily: 'Nunito_900Black',
+        fontSize: 17
     }
 })

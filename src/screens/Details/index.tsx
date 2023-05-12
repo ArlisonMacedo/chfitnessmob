@@ -1,4 +1,4 @@
-import { Image, Text, TouchableOpacity, View, Linking } from "react-native";
+import { Image, Text, TouchableOpacity, View, Linking, Modal, Alert, TextInput, Pressable } from "react-native";
 import Header from "../../components/Header";
 import { useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
@@ -29,6 +29,7 @@ interface Pushing {
     day_assin: string
     day_venc: string
     count_day: number
+    userId: string
 }
 
 export default function Details() {
@@ -37,7 +38,11 @@ export default function Details() {
     const { id } = route.params as Routes
     const [user, setUser] = useState({} as User)
     const [pushing, setPushing] = useState<Pushing[]>([])
-    // const [whatsappNum, setWhatsappNum] = useState('')
+    const [modelVisible, setModalVisible] = useState(false)
+    const [dayAssin, setDayAssin] = useState('')
+    const conditionButton = ['createSignature', 'renew']
+    const [labelCondition, setLabelCondition] = useState('')
+
 
     useEffect(() => {
 
@@ -50,6 +55,45 @@ export default function Details() {
 
     function handleGoCallWahtsapp(whatsapp: string) {
         Linking.openURL(`whatsapp://send?text=Olá, a sua mensalidade está atrasada, por favor regulare-se&phone=+55${whatsapp}`)
+    }
+
+    async function handleSetDayAssin() {
+        const data = {
+            day_assin: dayAssin
+        }
+        const response = await api.post(`pushing/${user.id}`, data)
+        console.log(response.data)
+        setModalVisible(!modelVisible)
+        Alert.alert("Sucesso!", "Assinatura criada com sucesso, pode treina")
+
+        api.get(`user/pushning/${id}`)
+            .then(response => {
+                setUser(response.data)
+                setPushing(response.data.pushings)
+            })
+    }
+
+    async function handleSetRenewDayAssin() {
+        const data = {
+            day_assin: dayAssin
+        }
+
+        pushing.map(async (push) => {
+            if (push.userId === user.id) {
+                const response = await api.put(`renew/user/pushing/${push.id}`, data)
+                console.log(response.data)
+                setModalVisible(!modelVisible)
+                Alert.alert("Sucesso!", "Mesalidade atualizada.")
+            }
+        })
+
+        api.get(`user/pushning/${id}`)
+            .then(response => {
+                setUser(response.data)
+                setPushing(response.data.pushings)
+            })
+
+
     }
 
 
@@ -77,7 +121,7 @@ export default function Details() {
                                 <View key={pusher.id} style={styles.pushing}>
                                     <Text style={styles.dayAssin}>Dia da assinatura: {dayjs(pusher.day_assin).format('DD/MM/YYYY h:mm: A')}</Text>
                                     <Text style={styles.dayVen}>Dia do vencimento: {dayjs(pusher.day_venc).format('DD/MM/YYYY h:mm: A')}</Text>
-                                    <Text style={styles.countDay}>Dias usados: {pusher.count_day} Dias </Text>
+                                    <Text style={styles.countDay}>Dias usados: {pusher.count_day === 0 ? (<Text>Mensalidade realizada hoje</Text>) : (<Text>{pusher.count_day} Dias</Text>)}</Text>
                                     {
                                         pusher.count_day <= 30 ? (
                                             <TouchableOpacity style={styles.statusV}>
@@ -98,11 +142,61 @@ export default function Details() {
 
                 <View style={styles.footer}>
                     <View style={styles.footerContent}>
-                        <TouchableOpacity style={styles.buttonCallRenew}>
-                            <Text style={styles.buttonCallRenewText}>
-                                Renovar
-                            </Text>
-                        </TouchableOpacity>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={modelVisible}
+                            onRequestClose={() => {
+
+                                setModalVisible(!modelVisible)
+                            }}
+                        >
+                            <View style={styles.modelView}>
+                                <View style={styles.modelContent}>
+                                    <Text style={styles.inputText}>INSIRA O DIA</Text>
+                                    <TextInput
+                                        keyboardType="numeric"
+                                        style={styles.inputModal}
+                                        onChangeText={event => setDayAssin(event)}
+                                    />
+                                </View>
+
+                                {
+                                    labelCondition === conditionButton[0] ?
+                                        (
+                                            <Pressable style={styles.modalButton} onPress={() => { handleSetDayAssin() }}>
+                                                <Text style={styles.modalButtonText}>Enviar</Text>
+                                            </Pressable>
+
+                                        ) :
+                                        (
+                                            <Pressable style={styles.modalButton} onPress={() => { handleSetRenewDayAssin() }}>
+                                                <Text style={styles.modalButtonText}>Enviar</Text>
+                                            </Pressable>
+                                        )
+                                }
+
+
+                            </View>
+
+                        </Modal>
+                        {
+                            !pushing.length ? (
+                                <TouchableOpacity style={styles.buttonCallRenew} onPress={() => { setModalVisible(true), setLabelCondition(conditionButton[0]) }}>
+                                    <Text style={styles.buttonCallRenewText}>
+                                        Criar assinatura
+                                    </Text>
+                                </TouchableOpacity>
+                            ) :
+                                (
+                                    <TouchableOpacity style={styles.buttonCallRenew} onPress={() => { setModalVisible(true), setLabelCondition(conditionButton[1]) }} >
+                                        <Text style={styles.buttonCallRenewText}>
+                                            Renovar/Alterar
+                                        </Text>
+                                    </TouchableOpacity>
+                                )
+                        }
+
                         <TouchableOpacity
                             style={styles.buttonCallWhatsapp}
                             onPress={() => { handleGoCallWahtsapp(user.whatsapp) }}
