@@ -140,13 +140,16 @@ export default function Index() {
                                                                     </Text>
                                                                     <Text style={styles.cellButtonCountDays}>Dias ativos {' '}
                                                                         {
-                                                                            push.count_day === 0 ? (
+                                                                            push.count_day === 30 ? (
                                                                                 <Text style={{ fontWeight: 'bold', color: '#FBEF55' }}>
                                                                                     Assinatura realizada hoje
                                                                                 </Text>
                                                                             ) : (
                                                                                 <Text style={{ fontWeight: 'bold', color: '#FBEF55' }}>
-                                                                                    {push.count_day}
+                                                                                    {push.count_day < 0 ?
+                                                                                        (<Text style={{ backgroundColor: '#E50914', color: '#fff' }}>Atrasado</Text>)
+                                                                                        :
+                                                                                        (<Text>{push.count_day}</Text>)}
                                                                                 </Text>
 
                                                                             )
@@ -190,7 +193,7 @@ export default function Index() {
 
                 </View>
             </ScrollView>
-            <TouchableOpacity style={styles.refresh} onPress={updateData}>
+            <TouchableOpacity style={styles.refresh} onPress={updateData} activeOpacity={0.3}>
                 <ArrowsClockwise size={24} color='#000' weight='bold' />
             </TouchableOpacity>
         </View>

@@ -133,7 +133,7 @@ export default function Details() {
                                         <Text style={styles.dayAssin}>Dia da assinatura: {dayjs(pusher.day_assin).format('DD/MM/YYYY h:mm: A')}</Text>
                                         <Text style={styles.dayVen}>Dia do vencimento: {dayjs(pusher.day_venc).format('DD/MM/YYYY h:mm: A')}</Text>
                                         <Text style={styles.countDay}>{pusher.count_day === 30 ? (<Text>Mensalidade realizada hoje</Text>) :
-                                            (<Text>Faltam {pusher.count_day} dias para o vecimento </Text>)}</Text>
+                                            (<Text>{pusher.count_day <= 0 ? (<Text>Mensalidade expirada</Text>) : (<Text>Faltam {pusher.count_day} dias para o vecimento </Text>)} </Text>)}</Text>
                                         {
                                             pusher.count_day >= 0 ? (
                                                 <TouchableOpacity style={styles.statusV}>
