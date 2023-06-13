@@ -95,7 +95,7 @@ export default function Late() {
                                   {dayjs(push.day_venc).format('DD/MM/YYYY h:mm: A')}
                                 </Text>
                               </Text>
-                              <Text style={styles.cellButtonCountDays}>Dias ativos {' '}
+                              <Text style={styles.cellButtonCountDays}>Dias atrasados {' '}
                                 <Text style={{ fontWeight: 'bold', color: '#FBEF55' }}>
                                   {push.count_day}
                                 </Text>
