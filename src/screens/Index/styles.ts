@@ -67,5 +67,16 @@ export const styles = StyleSheet.create({
         fontFamily: 'Nunito_400Regular',
         fontSize: 12,
         color: '#fff'
+    },
+    refresh: {
+        position: 'absolute',
+        bottom: 40,
+        right: 30,
+        backgroundColor: '#FBEF55',
+        width: 60,
+        height: 60,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })

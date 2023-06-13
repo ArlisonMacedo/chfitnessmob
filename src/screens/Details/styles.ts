@@ -83,12 +83,25 @@ export const styles = StyleSheet.create({
         rowGap: 2,
 
     },
+    buttonDelete: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#E50914',
+        height: 40,
+        width: '30%',
+        borderRadius: 8
+    },
+    buttonDeleteText: {
+        color: '#fff',
+        fontFamily: 'Nunito_900Black'
+    },
     buttonCallWhatsapp: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#53e151',
-        width: '45%',
+        width: '30%',
         height: 40,
         borderRadius: 8
     },
@@ -101,7 +114,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#c4c4cc',
-        width: '45%',
+        width: '30%',
         height: 40,
         borderRadius: 8
     },

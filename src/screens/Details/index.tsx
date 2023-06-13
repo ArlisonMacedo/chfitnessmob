@@ -1,6 +1,6 @@
 import { Image, Text, TouchableOpacity, View, Linking, Modal, Alert, TextInput, Pressable } from "react-native";
 import Header from "../../components/Header";
-import { useRoute } from "@react-navigation/native";
+import { CommonActions, useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import dayjs from "dayjs";
@@ -37,6 +37,7 @@ export default function Details() {
     const [dayAssin, setDayAssin] = useState('')
     const conditionButton = ['createSignature', 'renew']
     const [labelCondition, setLabelCondition] = useState('')
+    const { dispatch } = useNavigation()
 
 
     useEffect(() => {
@@ -91,6 +92,16 @@ export default function Details() {
 
     }
 
+    async function handleDeleteUser(uid: string) {
+        // console.log(uid)
+        const response = await api.delete(`user/${uid}`)
+        console.log(response.data)
+        Alert.alert("Sucesso!", "Usuário deletado com sucesso!")
+        dispatch(
+            CommonActions.navigate('Index')
+        )
+    }
+
 
     return (
         <View style={styles.container}>
@@ -121,9 +132,10 @@ export default function Details() {
                                     <View key={pusher.id} style={styles.pushing}>
                                         <Text style={styles.dayAssin}>Dia da assinatura: {dayjs(pusher.day_assin).format('DD/MM/YYYY h:mm: A')}</Text>
                                         <Text style={styles.dayVen}>Dia do vencimento: {dayjs(pusher.day_venc).format('DD/MM/YYYY h:mm: A')}</Text>
-                                        <Text style={styles.countDay}>Dias usados: {pusher.count_day === 0 ? (<Text>Mensalidade realizada hoje</Text>) : (<Text>{pusher.count_day} Dias</Text>)}</Text>
+                                        <Text style={styles.countDay}>{pusher.count_day === 30 ? (<Text>Mensalidade realizada hoje</Text>) :
+                                            (<Text>Faltam {pusher.count_day} dias para o vecimento </Text>)}</Text>
                                         {
-                                            pusher.count_day <= 30 ? (
+                                            pusher.count_day >= 0 ? (
                                                 <TouchableOpacity style={styles.statusV}>
                                                     <Text style={styles.statusText}>Regular</Text>
                                                 </TouchableOpacity>
@@ -183,23 +195,31 @@ export default function Details() {
                         </Modal>
                         {
                             !pushing.length ? (
-                                <TouchableOpacity style={styles.buttonCallRenew} onPress={() => { setModalVisible(true), setLabelCondition(conditionButton[0]) }}>
+                                <TouchableOpacity style={styles.buttonCallRenew} activeOpacity={0.7} onPress={() => { setModalVisible(true), setLabelCondition(conditionButton[0]) }}>
                                     <Text style={styles.buttonCallRenewText}>
                                         Criar assinatura
                                     </Text>
                                 </TouchableOpacity>
                             ) :
                                 (
-                                    <TouchableOpacity style={styles.buttonCallRenew} onPress={() => { setModalVisible(true), setLabelCondition(conditionButton[1]) }} >
+                                    <TouchableOpacity style={styles.buttonCallRenew} activeOpacity={0.7} onPress={() => { setModalVisible(true), setLabelCondition(conditionButton[1]) }} >
                                         <Text style={styles.buttonCallRenewText}>
                                             Renovar/Alterar
                                         </Text>
                                     </TouchableOpacity>
                                 )
                         }
+                        <TouchableOpacity
+                            style={styles.buttonDelete}
+                            activeOpacity={0.7}
+                            onPress={() => handleDeleteUser(user.id)}
+                        >
+                            <Text style={styles.buttonDeleteText}>Deletar</Text>
+                        </TouchableOpacity>
 
                         <TouchableOpacity
                             style={styles.buttonCallWhatsapp}
+                            activeOpacity={0.7}
                             onPress={() => { handleGoCallWahtsapp(user.whatsapp) }}
                         >
                             <Text style={styles.buttonCallWhatsappText}>

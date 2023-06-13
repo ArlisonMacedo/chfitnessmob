@@ -78,9 +78,6 @@ export default function Index() {
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', flexGrow: 0.5 }}>
                     <Text style={styles.contentText}>Alunos</Text>
-                    <TouchableOpacity onPress={updateData} style={{ marginLeft: 10 }}>
-                        <ArrowsClockwise size={22} color='#FBEF55' weight='bold' />
-                    </TouchableOpacity>
 
                 </View>
                 <TouchableOpacity onPress={handleGoNewStudy}>
@@ -131,17 +128,17 @@ export default function Index() {
                                                         user.pushings.map(push => {
                                                             return (
                                                                 <View key={push.id}>
-                                                                    <Text style={styles.cellButtonDate}>Dia assin. {'\b'}
+                                                                    <Text style={styles.cellButtonDate}>Dia assin. {' '}
                                                                         <Text style={{ fontWeight: 'bold' }}>
                                                                             {dayjs(push.day_assin).format('DD/MM/YYYY h:mm: A')}
                                                                         </Text>
                                                                     </Text>
-                                                                    <Text style={styles.cellButtonDate}>Dia venc. {'\b'}
+                                                                    <Text style={styles.cellButtonDate}>Dia venc. {' '}
                                                                         <Text style={{ fontWeight: 'bold' }}>
                                                                             {dayjs(push.day_venc).format('DD/MM/YYYY h:mm: A')}
                                                                         </Text>
                                                                     </Text>
-                                                                    <Text style={styles.cellButtonCountDays}>Dias ativos {'\b'}
+                                                                    <Text style={styles.cellButtonCountDays}>Dias ativos {' '}
                                                                         {
                                                                             push.count_day === 0 ? (
                                                                                 <Text style={{ fontWeight: 'bold', color: '#FBEF55' }}>
@@ -180,7 +177,7 @@ export default function Index() {
                         }}>
                             <View>
                                 <Text style={styles.cellButtonName} >Arlison Macedo Pereira</Text>
-                                <Text style={styles.cellButtonDate}>Dia assin. {'\b'}
+                                <Text style={styles.cellButtonDate}>Dia assin. {' '}
                                     <Text style={{ fontWeight: 'bold' }}>22/02/2022</Text>
                                 </Text>
                                 <Text style={styles.cellButtonCountDays}>Dias 22</Text>
@@ -191,9 +188,11 @@ export default function Index() {
                     </TouchableOpacity> */}
 
 
-
                 </View>
             </ScrollView>
+            <TouchableOpacity style={styles.refresh} onPress={updateData}>
+                <ArrowsClockwise size={24} color='#000' weight='bold' />
+            </TouchableOpacity>
         </View>
     )
 }
