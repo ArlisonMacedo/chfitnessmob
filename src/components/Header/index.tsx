@@ -35,7 +35,7 @@ export default function Header() {
 
 
                 </View>
-                <SignOut size={22} color="#c4c4cc" weight="bold" />
+                <><Text></Text></>
             </View>
         </View>
     )
